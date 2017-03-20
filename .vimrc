@@ -31,14 +31,13 @@ Plug 'tpope/vim-surround'
 Plug 'Townk/vim-autoclose'
 " Indent text object
 Plug 'michaeljsmith/vim-indent-object'
-" Indentation based movements
-Plug 'jeetsukumaran/vim-indentwise'
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
 " operators, highlighting, run and ipdb breakpoints)
 Plug 'klen/python-mode'
-" Better autocompletion
-Plug 'valloric/youcompleteme'
-" Plug 'Shougo/neocomplcache.vim'
+if has('gui_running')
+  " Better autocompletion
+  Plug 'valloric/youcompleteme'
+endif
 " Snippets manager (SnipMate), dependencies, and snippets repo
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
@@ -196,6 +195,8 @@ endif
 " ==========================================================
 "
 " ========= Tagbar ==========
+" run: ctags -o ~/dev-tags and make sure ~/.ctags exists
+set tags=~/dev-tags
 " toggle tagbar display
 map <Leader>rt :TagbarToggle<CR>
 " autofocus on tagbar open
@@ -233,6 +234,8 @@ let g:ctrlp_custom_ignore = {
 if has("gui_macvim")
  " prevent macvim from opening new tab, and use command shift t
  " is overriden in gvimrc
+  " command shift o opens tags browser
+  map <D-O> :CtrlPTag<cr>
   map <D-t> :CtrlP<CR>
   imap <D-t> <ESC>:CtrlP<CR>
 endif
@@ -268,23 +271,6 @@ let g:pymode_run_bind = '<leader>r'
 
 nmap <leader>D :tab split<CR>:PymodePython rope.goto()<CR>
 nmap <leader>o :RopeFindOccurrences<CR>
-
-" ========= NeoComplete ==========
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_ignore_case = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_auto_select = 1
-let g:neocomplcache_enable_fuzzy_completion = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_fuzzy_completion_start_length = 1
-let g:neocomplcache_auto_completion_start_length = 1
-let g:neocomplcache_manual_completion_start_length = 1
-let g:neocomplcache_min_keyword_length = 1
-let g:neocomplcache_min_syntax_length = 1
-" complete with workds from any opened file
-let g:neocomplcache_same_filetype_lists = {}
-let g:neocomplcache_same_filetype_lists._ = '_'
 
 " ========= Autoclose ==========
 " Fix to let ESC work as espected with Autoclose plugin
