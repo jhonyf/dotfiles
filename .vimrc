@@ -34,10 +34,10 @@ Plug 'michaeljsmith/vim-indent-object'
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
 " operators, highlighting, run and ipdb breakpoints)
 Plug 'klen/python-mode'
-if has('gui_running')
+"if has('gui_running')
   " Better autocompletion
-  Plug 'valloric/youcompleteme'
-endif
+Plug 'valloric/youcompleteme'
+"endif
 " Snippets manager (SnipMate), dependencies, and snippets repo
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
@@ -62,8 +62,11 @@ Plug 'tomasr/molokai'
 Plug 'YankRing.vim'
 " Zoom window
 Plug 'troydm/zoomwintab.vim'
-call plug#end()
+" Buffer Explorer
+Plug 'jeetsukumaran/vim-buffergator'
 
+" Insert plugis above end!!
+call plug#end()
 " ==========================================================
 " Basic Settings
 " ==========================================================
@@ -260,7 +263,7 @@ let g:pymode_options_colorcolumn = 0
 let g:pymode_rope = 0
 " open definitions on same window, and custom mappings for definitions and
 " occurrences
-let g:pymode_rope_goto_definition_bind = ',d'
+let g:pymode_rope_goto_definition_bind = ',l'
 let g:pymode_rope_goto_definition_cmd = 'e'
 " enable python documenation in buffer
 let g:pymode_doc = 1
@@ -268,6 +271,8 @@ let g:pymode_doc_bind = 'K'
 " allow to run python code
 let g:pymode_run = 1
 let g:pymode_run_bind = '<leader>r'
+" insert pdb breakpoint text
+let g:pymode_breakpoint_bind = '<leader>d'
 
 nmap <leader>D :tab split<CR>:PymodePython rope.goto()<CR>
 nmap <leader>o :RopeFindOccurrences<CR>
