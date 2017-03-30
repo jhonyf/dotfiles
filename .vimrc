@@ -302,3 +302,9 @@ let g:airline#extensions#whitespace#enabled = 0
 
 " ========= ZOOMWIN ==========
 map <leader>z :ZoomWinTabToggle<CR>
+
+" ========= Buffergator ==========
+" Determines how a new Buffergator window will be opened, L, R, T, B
+let g:buffergator_viewport_split_policy = "B"
+" Sets the default sort regime for buffer listing, default bufnum
+let g:buffergator_sort_regime = "mru"
