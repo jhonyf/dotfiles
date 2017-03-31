@@ -248,8 +248,10 @@ let g:syntastic_enable_signs=1
 let g:syntastic_quiet_messages = {'level': 'warnings'}
 " when set to 1 error window will automatically be opened, set 2 to close
 let g:syntastic_auto_loc_list=1
+let g:syntastic_loc_list_height = 5
 " show list of errors and warnings on the current file
 nmap <leader>e :Errors<CR>
+nmap <leader>c :lclose<CR>
 
 " ========= Python Mode ==========
 " don't use linter, we use syntastic for that
@@ -299,6 +301,10 @@ highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
 let g:airline_powerline_fonts = 0
 let g:airline_theme = 'bubblegum'
 let g:airline#extensions#whitespace#enabled = 0
+" hides branch
+let g:airline#extensions#branch#enabled = 0
+" hides number of changes made
+let g:airline#extensions#hunks#enabled = 0
 
 " ========= ZOOMWIN ==========
 map <leader>z :ZoomWinTabToggle<CR>
