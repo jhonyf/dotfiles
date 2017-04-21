@@ -34,10 +34,10 @@ Plug 'michaeljsmith/vim-indent-object'
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
 " operators, highlighting, run and ipdb breakpoints)
 Plug 'klen/python-mode'
-"if has('gui_running')
+if has('gui_running')
   " Better autocompletion
-Plug 'valloric/youcompleteme'
-"endif
+  Plug 'valloric/youcompleteme'
+endif
 " Snippets manager (SnipMate), dependencies, and snippets repo
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
@@ -181,6 +181,26 @@ if !isdirectory(&directory)
 endif
 if !isdirectory(&undodir)
     call mkdir(&undodir, "p")
+endif
+
+" automatically wrap text for md files
+" use V then gq to reformat
+au BufRead,BufNewFile *.md setlocal textwidth=80
+au BufRead,BufNewFile *.md setlocal spell
+
+" copy current file name (relative/absolute) to system clipboard
+if has("gui_macvim")
+  " relative path  (src/foo.txt)
+  nnoremap <leader>cp :let @*=expand("%")<CR>
+
+  " absolute path  (/something/src/foo.txt)
+  nnoremap <leader>ca :let @*=expand("%:p")<CR>
+
+  " filename       (foo.txt)
+  nnoremap <leader>cf :let @*=expand("%:t")<CR>
+
+  " directory name (/something/src)
+  nnoremap <leader>ch :let @*=expand("%:p:h")<CR>
 endif
 
 " ==========================================================
