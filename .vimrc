@@ -64,6 +64,9 @@ Plug 'YankRing.vim'
 Plug 'troydm/zoomwintab.vim'
 " Buffer Explorer
 Plug 'jeetsukumaran/vim-buffergator'
+" Buffer Explorer
+" Plug 'fholgado/minibufexpl.vim'
+Plug 'vim-ctrlspace/vim-ctrlspace'
 
 " Insert plugis above end!!
 call plug#end()
@@ -129,7 +132,7 @@ set report=0                " : commands always print changed line count.
 set shortmess+=a            " Use [+]/[RO]/[w] for modified/readonly/written.
 set ruler                   " Show some info, even without statuslines.
 set laststatus=2            " Always show statusline, even if only 1 window.
-set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ %{fugitive#statusline()}
+" set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ %{fugitive#statusline()}
 " displays tabs with :set list & displays when a line runs off-screen
 "set listchars=tab:>-,eol:$,trail:-,precedes:<,extends:>
 set listchars=tab:>-,trail:-,precedes:<,extends:>
@@ -203,6 +206,12 @@ if has("gui_macvim")
   nnoremap <leader>ch :let @*=expand("%:p:h")<CR>
 endif
 
+" windows moving shortcut, instead of Ctrl+w j, now it's Ctrl+j
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " ==========================================================
 " Plugins settings
 "        <D-something>        Command in Apple and macVim
@@ -242,6 +251,8 @@ let NERDTreeShowHidden=1
 if has("gui_macvim")
   map <D-F> :Ack<space>
 endif
+" search for word under cursor
+noremap <Leader>a :Ack <cword><cr>
 
 " ========= CTRLP ==========
 " don't change working directory
@@ -326,6 +337,23 @@ let g:airline#extensions#branch#enabled = 0
 " hides number of changes made
 let g:airline#extensions#hunks#enabled = 0
 
+let g:airline#extensions#tagbar#enabled = 1
+
+" enable or disable tabs
+let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>+ <Plug>AirlineSelectNextTab
+
 " ========= ZOOMWIN ==========
 map <leader>z :ZoomWinTabToggle<CR>
 
@@ -334,3 +362,17 @@ map <leader>z :ZoomWinTabToggle<CR>
 let g:buffergator_viewport_split_policy = "B"
 " Sets the default sort regime for buffer listing, default bufnum
 let g:buffergator_sort_regime = "mru"
+
+" ========= CtrlSpace ==========
+let g:airline#extensions#ctrlspace#enabled = 1
+let g:CtrlSpaceStatuslineFunction = "airline#extensions#ctrlspace#statusline()"
+
+set hidden
+if has("gui_running")
+  " Settings for MacVim and Inconsolata font
+  let g:CtrlSpaceSymbols = { "File": "◯", "CTab": "▣", "Tabs": "▢" }
+endif
+if executable("ag")
+  let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
+endif
+
