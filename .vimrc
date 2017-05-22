@@ -251,8 +251,16 @@ let NERDTreeShowHidden=1
 if has("gui_macvim")
   map <D-F> :Ack<space>
 endif
+
+" do not auto open
+cnoreabbrev Ack Ack!
+
 " search for word under cursor
-noremap <Leader>a :Ack <cword><cr>
+noremap <Leader>a :Ack! <cword><cr>
+" nerdtree
+let g:ack_mappings = {
+  \  'v':  '<C-W><CR><C-W>L<C-W>p<C-W>J<C-W>p',
+  \ 'gv': '<C-W><CR><C-W>L<C-W>p<C-W>J' }
 
 " ========= CTRLP ==========
 " don't change working directory
@@ -283,6 +291,7 @@ let g:syntastic_loc_list_height = 5
 " show list of errors and warnings on the current file
 nmap <leader>e :Errors<CR>
 nmap <leader>c :lclose<CR>
+let g:syntastic_auto_jump = 0
 
 " ========= Python Mode ==========
 " don't use linter, we use syntastic for that
@@ -341,18 +350,6 @@ let g:airline#extensions#tagbar#enabled = 1
 
 " enable or disable tabs
 let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
-nmap <leader>- <Plug>AirlineSelectPrevTab
-nmap <leader>+ <Plug>AirlineSelectNextTab
 
 " ========= ZOOMWIN ==========
 map <leader>z :ZoomWinTabToggle<CR>
