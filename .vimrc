@@ -206,11 +206,12 @@ if has("gui_macvim")
   nnoremap <leader>ch :let @*=expand("%:p:h")<CR>
 endif
 
+" Broken somehow, saving moves cursor to next window...
 " windows moving shortcut, instead of Ctrl+w j, now it's Ctrl+j
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" nnoremap <C-J> <C-W><C-J>
+" nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-L> <C-W><C-L>
+" nnoremap <C-H> <C-W><C-H>
 
 " ==========================================================
 " Plugins settings
