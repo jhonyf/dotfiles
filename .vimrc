@@ -247,7 +247,18 @@ let NERDTreeQuitOnOpen = 0
 " Show dot files
 let NERDTreeShowHidden=1
 
+" ========= Fugitive ==========
+" open quicklist after doing Ggrep
+command -nargs=+ Ggp execute 'silent Ggrep!' <q-args> | cw | redraw!
+" search for word under cursor
+noremap <Leader>g :Ggp <cword><cr>
+
 " ========= ACK ==========
+" Use ag if exists
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
 " Command-Shift-F on OSX
 if has("gui_macvim")
   map <D-F> :Ack<space>
