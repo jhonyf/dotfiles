@@ -206,6 +206,15 @@ if has("gui_macvim")
   nnoremap <leader>ch :let @*=expand("%:p:h")<CR>
 endif
 
+ " quickfix
+nmap \x :cclose<CR>
+autocmd FileType qf setlocal number nolist
+autocmd Filetype qf wincmd J " Makes sure it's at the bottom of the vim window
+
+" Use the space key to toggle folds
+nnoremap <space> za
+vnoremap <space> zf
+
 " Broken somehow, saving moves cursor to next window...
 " windows moving shortcut, instead of Ctrl+w j, now it's Ctrl+j
 " nnoremap <C-J> <C-W><C-J>
