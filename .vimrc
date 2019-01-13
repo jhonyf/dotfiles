@@ -7,7 +7,7 @@
 " 3. :PlugInstall
 " 
 "  Note: if you have youcompleteme, follow instructions to compile it
-"  i.e on bundle/ycm run ./install.py
+"  i.e on .vim/plugged/youcompleteme and run ./install.py
 "
 call plug#begin('~/.vim/plugged')
 " Better file browser
@@ -33,7 +33,7 @@ Plug 'Townk/vim-autoclose'
 Plug 'michaeljsmith/vim-indent-object'
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
 " operators, highlighting, run and ipdb breakpoints)
-Plug 'klen/python-mode'
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
 if has('gui_running')
   " Better autocompletion
   Plug 'valloric/youcompleteme'
@@ -67,6 +67,9 @@ Plug 'jeetsukumaran/vim-buffergator'
 " Buffer Explorer
 " Plug 'fholgado/minibufexpl.vim'
 Plug 'vim-ctrlspace/vim-ctrlspace'
+" Fzf, but must call brew install fzf first
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 " Insert plugis above end!!
 call plug#end()
@@ -207,9 +210,9 @@ if has("gui_macvim")
 endif
 
  " quickfix
-nmap \x :cclose<CR>
-autocmd FileType qf setlocal number nolist
-autocmd Filetype qf wincmd J " Makes sure it's at the bottom of the vim window
+"nmap \x :cclose<CR>
+"autocmd FileType qf setlocal number nolist
+"autocmd Filetype qf wincmd J " Makes sure it's at the bottom of the vim window
 
 " Use the space key to toggle folds
 nnoremap <space> za
@@ -243,6 +246,11 @@ set tags=~/dev-tags
 map <Leader>rt :TagbarToggle<CR>
 " autofocus on tagbar open
 let g:tagbar_autofocus = 1
+
+" ========= fzf ==========
+nmap ; :Buffers<CR>
+nmap <Leader>f :Files<CR>
+nmap <Leader>r :Tags<CR>
 
 " ========= NERDTree ==========
 " toggle nerdtree display
@@ -306,8 +314,9 @@ endif
 " ========= Syntastic ==========
 let g:syntastic_enable_signs=1
 let g:syntastic_quiet_messages = {'level': 'warnings'}
+let g:syntastic_check_on_open = 1
 " when set to 1 error window will automatically be opened, set 2 to close
-let g:syntastic_auto_loc_list=1
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 5
 " show list of errors and warnings on the current file
 nmap <leader>e :Errors<CR>
