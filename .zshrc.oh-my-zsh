@@ -13,6 +13,8 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh context dir vcs virtualenv)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_last
+# Used for determining powerlevel9k context
+DEFAULT_USER="$(whoami)"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
