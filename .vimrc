@@ -20,6 +20,8 @@ Plug 'majutsushi/tagbar'
 Plug 'ctrlpvim/ctrlp.vim'
 " Git integration
 Plug 'tpope/vim-fugitive'
+" Supports GBrowsbucketing_ide
+Plug 'tpope/vim-rhubarb'
 " Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -52,14 +54,14 @@ Plug 'lilydjwg/colorizer'
 " Ack code search (requires ack installed in the system)
 Plug 'mileszs/ack.vim'
 " Search results counter
-Plug 'IndexedSearch'
+Plug 'henrik/vim-indexed-search'
 " XML/HTML tags navigation
-Plug 'matchit.zip'
+Plug 'vim-scripts/matchit.zip'
 " Gvim colorschemes
-Plug 'Wombat'
+Plug 'vim-scripts/Wombat'
 Plug 'tomasr/molokai'
 " Yank history navigation
-Plug 'YankRing.vim'
+Plug 'vim-scripts/YankRing.vim'
 " Zoom window
 Plug 'troydm/zoomwintab.vim'
 " Buffer Explorer
@@ -315,6 +317,7 @@ endif
 let g:syntastic_enable_signs=1
 let g:syntastic_quiet_messages = {'level': 'warnings'}
 let g:syntastic_check_on_open = 1
+let g:syntastic_python_checkers = ['pylint', 'flake8', 'python']
 " when set to 1 error window will automatically be opened, set 2 to close
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 5
@@ -403,3 +406,4 @@ if executable("ag")
   let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
 endif
 
+let g:snipMate = { 'snippet_version' : 1 }

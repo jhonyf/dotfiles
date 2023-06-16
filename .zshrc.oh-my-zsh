@@ -23,7 +23,6 @@ plugins=(
   vi-mode
   knife
   knife_ssh
-  tmux
   kube-ps1
   kubectl
 )
